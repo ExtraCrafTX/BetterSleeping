@@ -99,7 +99,9 @@ public class EventHandler{
             return;
         }
         ServerPlayerEntity sp = (ServerPlayerEntity)player;
-        sendAsleepMessage(players, count, players.size(), sp.getServer().getGameRules().getInt(BetterSleeping.key));
+        if(count > 0){
+            sendAsleepMessage(players, count, players.size(), sp.getServer().getGameRules().getInt(BetterSleeping.key));
+        }
     }
 
     public static void onSleep(PlayerEntity player){
