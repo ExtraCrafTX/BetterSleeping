@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class EventHandler{
+    private static boolean nightSkipped = false;
+
     public static void onTick(MinecraftServer server){
         int percent = server.getGameRules().getInt(BetterSleeping.key);
         if(percent >= 100 || percent <= 0)
@@ -39,6 +41,7 @@ public class EventHandler{
     }
 
     private static void skipNight(ServerWorld world, List<ServerPlayerEntity> players){
+        nightSkipped = true;
         if(world.getGameRules().getBoolean(GameRules.DO_DAYLIGHT_CYCLE)){
             long l = world.getLevelProperties().getTimeOfDay() + 24000L;
             world.setTimeOfDay(l - l%24000);
@@ -99,7 +102,11 @@ public class EventHandler{
             return;
         }
         ServerPlayerEntity sp = (ServerPlayerEntity)player;
-        if(count > 0){
+        if(nightSkipped){
+            if(count == 0){
+                nightSkipped = false;
+            }
+        }else{
             sendAsleepMessage(players, count, players.size(), sp.getServer().getGameRules().getInt(BetterSleeping.key));
         }
     }
