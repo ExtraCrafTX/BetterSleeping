@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "bettersleeping",
-  "version": "0.4.0",
+  "version": "0.5.0",
 
   "name": "Better Sleeping",
   "description": "This mod adds sleep voting, gives sleeping players buffs and players who don't sleep debuffs!",
@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.extracraftx.minecraft.bettersleeping.BetterSleeping"
+      "com.extraCrafTX.bettersleeping.BetterSleeping"
     ]
   },
   "mixins": [
